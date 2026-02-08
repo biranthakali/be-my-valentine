@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1; /* Soft Pink */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        h1 { color: #d02090; font-size: 3rem; }
+
+        .container { position: relative; width: 100%; max-width: 600px; }
+
+        .buttons { margin-top: 50px; display: flex; justify-content: center; gap: 20px; }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn { background-color: #ff69b4; color: white; }
+        #yesBtn:hover { transform: scale(1.1); background-color: #ff1493; }
+
+        #noBtn {
+            background-color: #808080;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="question">Will you be my Valentine? ❤️</h1>
+        <div id="main-content">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp1eXFpZ3B6Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiCiZC/giphy.gif" alt="Cute Cat" width="250">
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="celebrate()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            // Move the button to a random position within the window
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            document.getElementById('question').innerHTML = "Yay! I knew you'd say yes! 💖";
+            document.getElementById('main-content').innerHTML = '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3ZpZnd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6Znd6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" width="300">';
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
