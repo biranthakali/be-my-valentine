@@ -19,9 +19,18 @@
             touch-action: manipulation;
         }
 
-        h1 { color: #d02090; font-size: 2.5rem; padding: 10px; }
+        h1 { color: #d02090; font-size: 2rem; padding: 15px; }
 
         .container { position: relative; width: 100%; max-width: 600px; }
+
+        /* This ensures the image box looks good even if the GIF fails */
+        #main-content {
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px; /* For the fallback heart emoji */
+        }
 
         .buttons { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
 
@@ -43,18 +52,10 @@
             transition: 0.1s;
         }
 
-        .gif-container {
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         img {
             border-radius: 15px;
             max-width: 250px;
             height: auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -63,8 +64,11 @@
     <div class="container">
         <h1 id="question">Will you be my Valentine? ❤️</h1>
         
-        <div class="gif-container" id="main-content">
-            <img id="display-gif" src="https://media.tenor.com/9t_r_v6Yn6EAAAAi/mochi-peach-cute-cat.gif" alt="Asking">
+        <div id="main-content">
+            <img id="display-gif" 
+                 src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Smiling%20Face%20with%20Hearts.png" 
+                 alt="❤️"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='💝'">
         </div>
 
         <div class="buttons">
@@ -76,24 +80,9 @@
     <script>
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            // Randomly move button within the viewport
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
         }
-
-        function celebrate() {
-            // Update Text
-            document.getElementById('question').innerHTML = "Yay! I knew you'd say yes! 💖";
-            
-            // Update GIF to a celebration one
-            document.getElementById('display-gif').src = "https://media.tenor.com/6XzNnI-4m38AAAAi/tkthao219-bubududu.gif";
-            
-            // Hide the No button
-            document.getElementById('noBtn').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
